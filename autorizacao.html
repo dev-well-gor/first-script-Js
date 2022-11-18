@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autorização de Brinquedo</title>
+
+    <style>
+        input {
+            font: normal 16pt Arial;
+            width: 400px;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+        input#id {
+            width: 100px;
+            height: 20px;
+        }
+        input#al {
+            width: 100px;
+            height: 20px;
+        }
+        input#ver {
+            width: 100px;
+            height: 40px;
+            font: 15pt;
+            line-height: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        div {
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font: normal 16pt Arial;
+        }
+        div#ex {
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font: normal 18pt Arial;
+        }
+        div#ex2 {
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font: normal 18pt Arial;
+        }
+
+        div#ex {
+            font: normal 20pt Arial;
+            background: rgb(224, 223, 223);
+            color: white;
+            width: 300px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+        }
+        input#ver2 {
+            width: 100px;
+            height: 40px;
+            font: 15pt;
+            line-height: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Verificação</h1>
+    <h2>Insira seus dados:</h2>
+    <strong>INSIRA SEU NOME</strong> <input name="Escreva seu nome" id="nome" required> </br>
+    <strong>INSIRA SUA IDADE</strong> <input type="Number" id="id" required> </br>
+    <strong>INSIRA SUA ALTURA</strong> <input type="Number" id="al" required> </br>
+    <input type="button" id="ver" value="enviar" onclick="enviar()">
+    <input type="button" id="ver2" value="resultado" onclick="resultado()">
+    <div id="l1"> Características </div>
+    <div id="ex2"> Condição </div>
+    <div id="ex"> Resultado </div>
+
+    <script>
+
+        var n = document.getElementById ('nome')
+        var i = document.getElementById ('id')
+        var a = document.getElementById ('al')
+        
+
+
+        function enviar() {
+            var nome = (n.value)
+            var idade = Number(i.value)
+            var altura = Number (a.value)
+            var res = document.getElementById ('l1')
+            res.innerText = (`Seu nome é ${nome}, tem ${idade} anos e ${altura}m`)
+        }
+        
+        function resultado() {
+            var nome = (n.value)
+            var idade = Number(i.value)
+            var altura = Number (a.value)
+            var adulto = idade >= 18 ? true : false
+            var adolescente = idade >= 14 ? true : false
+            var criança = idade < 14 ? true : false
+            var alta = altura >= 1.73 ? true : false
+            var media = altura >=1.65 ? true : false
+            var baixa = altura <= 1.64 ? true : false
+            console.log ('adulto ' , adulto)
+            console.log ('adolescente ' , adolescente)
+            console.log ('criança' , criança)
+            console.log ('alto ' , alta)
+            console.log ('medio ' , media)
+            console.log ('baixo ' , baixa)
+
+                if ( criança == true && baixa == true ) {
+                window.document.getElementById ("ex")
+                document.getElementById ('ex').style.color = 'green'
+                document.getElementById ('ex').innerHTML = "<strong>Pode brincar</strong>"
+
+                 } else {
+                window.document.getElementById ("ex") 
+                document.getElementById ('ex').style.color = 'red'
+                document.getElementById ('ex').innerHTML = "<strong>Não pode brincar</strong>"
+                 }
+
+                 if (idade >= 18) {
+                document.getElementById ('ex2').innerHTML = `<b>${nome}</b> é um adulto `
+            } else if ( idade >= 15) {
+                document.getElementById ('ex2').innerHTML = `${nome} é um adolescente `
+            } else if (idade < 14) {
+                document.getElementById ('ex2').innerHTML = `${nome} é uma criança `
+            }
+            if (altura >= 1.73) {
+                document.getElementById ('ex2').innerHTML += `de estatura alta`
+            } else if ( altura >= 1.65) {
+                document.getElementById ('ex2').innerHTML += `de estatura baixa`
+            } else if (altura < 1.64 ) {
+                document.getElementById ('ex2').innerHTML += `de estatura baixa`
+        }
+        }
+    
+    
+
+    </script>
+</body>
+</html>
